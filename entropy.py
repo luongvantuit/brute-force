@@ -40,4 +40,16 @@ if __name__ == '__main__':
         print('Length of the password: %d\n' % len(pwd))
         print('Cardinality: %d\n' % l_collection)
         print('Entropy: %.2f\n' % e)
-        print('Time guess: %.2fs\n' % ((l_collection ** len(pwd))/(2*10*6)))
+        time_attack = (l_collection ** len(pwd))/(2*10*6)
+        if time_attack / 365*24*60*60 > 0:
+            print('Time guess: %.2f Y\n' % (time_attack / (365*24*60*60)))
+        elif time_attack / 30*24*60*60 > 0:
+            print('Time guess: %.2f M\n' % (time_attack / (30*24*60*60)))
+        elif time_attack / 24*60*60 > 0:
+            print('Time guess: %.2f d\n' % (time_attack / (24*60*60)))
+        elif time_attack / 60*60 > 0:
+            print('Time guess: %.2f h\n' % (time_attack / (60*60)))
+        elif time_attack / 60 > 0:
+            print('Time guess: %.2f m\n' % (time_attack / 60))
+        else:
+            print('Time guess: %.2f s\n' % time_attack)
